@@ -1,4 +1,4 @@
-package wxd.demo.demomaster.preimageview;
+package wxd.demo.demomaster.view.preimageview;
 
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;

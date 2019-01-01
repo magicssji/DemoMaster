@@ -1,4 +1,4 @@
-package wxd.demo.demomaster.preimageview;
+package wxd.demo.demomaster.view.preimageview;
 
 //预览图片基本配置器,包括设置图片加载器，即实现一个继承PreImageLoader即可
 public class PreImageConfige {

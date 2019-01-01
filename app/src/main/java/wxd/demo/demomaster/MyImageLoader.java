@@ -5,8 +5,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
-import wxd.demo.demomaster.preimageview.PreImageHolder;
-import wxd.demo.demomaster.preimageview.PreImageLoader;
+import wxd.demo.demomaster.view.preimageview.PreImageHolder;
+import wxd.demo.demomaster.view.preimageview.PreImageLoader;
 
 public class MyImageLoader implements PreImageLoader {
     @Override
