@@ -1,4 +1,4 @@
-package wxd.demo.demomaster;
+package wxd.demo.demomaster.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,11 +10,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import wxd.demo.demomaster.preimageview.PreImageActivity;
-import wxd.demo.demomaster.preimageview.PreImageConfige;
-import wxd.demo.demomaster.preimageview.PreImageHolder;
+import wxd.demo.demomaster.MyImageLoader;
+import wxd.demo.demomaster.R;
+import wxd.demo.demomaster.view.preimageview.PreImageActivity;
+import wxd.demo.demomaster.view.preimageview.PreImageConfige;
+import wxd.demo.demomaster.view.preimageview.PreImageHolder;
 
-import static wxd.demo.demomaster.preimageview.PreImageActivity.CACHE_IMAGE;
+import static wxd.demo.demomaster.view.preimageview.PreImageActivity.CACHE_IMAGE;
 
 //图片预览代码demo
 public class OneActivity extends Activity {

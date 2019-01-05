@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <wxd.demo.demomaster.view.RotatingCircleView
+            android:id="@+id/rotating_circle_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/pic"
+            app:circle_color="#f00"
+            app:circle_kind="all"
+            app:circle_width="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <wxd.demo.demomaster.view.RotatingCircleView
+                android:layout_width="100dp"
+                android:layout_height="200dp"
+                android:src="@mipmap/pic"
+                app:circle_color="#000000"
+                app:circle_kind="top_left"
+                app:circle_radius="10"
+                app:circle_width="2dp" />
+
+            <wxd.demo.demomaster.view.RotatingCircleView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/pic"
+                app:circle_color="#3ae40b"
+                app:circle_kind="top_right"
+                app:circle_radius="20"
+                app:circle_width="2dp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <wxd.demo.demomaster.view.RotatingCircleView
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/pic"
+                app:circle_color="#0b68a1"
+                app:circle_kind="bottom_left"
+                app:circle_radius="40"
+                app:circle_width="2dp" />
+
+            <wxd.demo.demomaster.view.RotatingCircleView
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/pic"
+                app:circle_color="#e812a8"
+                app:circle_kind="bottom_right"
+                app:circle_radius="60"
+                app:circle_width="2dp" />
+
+
+        </LinearLayout>
+
+        <wxd.demo.demomaster.view.RotatingCircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/pic"
+            app:circle_color="#2712e8"
+            app:circle_kind="all"
+            app:circle_radius="60"
+            app:circle_width="2dp" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -26,4 +26,16 @@
         android:textColor="#fff"
         android:textSize="18sp" />
 
+    <TextView
+        android:id="@+id/three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="1-2圆形图片"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+
 </LinearLayout>

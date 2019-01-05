@@ -13,16 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GuideActivity">
+        <activity android:name=".activity.GuideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OneActivity" />
-        <activity android:name=".preimageview.PreImageActivity" />
-        <activity android:name=".TwoActivity"/>
+        <activity android:name=".activity.OneActivity" />
+        <activity android:name=".view.preimageview.PreImageActivity" />
+        <activity android:name=".activity.TwoActivity" />
+        <activity android:name=".activity.ThreeActivity"></activity>
     </application>
 
 </manifest>

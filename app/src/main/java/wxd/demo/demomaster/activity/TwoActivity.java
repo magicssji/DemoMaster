@@ -1,4 +1,4 @@
-package wxd.demo.demomaster;
+package wxd.demo.demomaster.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import java.io.File;
 
+import wxd.demo.demomaster.R;
 import wxd.demo.demomaster.utils.ImgCompress;
 
 

@@ -1,4 +1,4 @@
-package wxd.demo.demomaster.preimageview;
+package wxd.demo.demomaster.view.preimageview;
 
 import android.os.Parcel;
 import android.os.Parcelable;
