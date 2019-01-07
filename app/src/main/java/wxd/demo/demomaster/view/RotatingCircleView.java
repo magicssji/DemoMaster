@@ -16,6 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import wxd.demo.demomaster.R;
 
@@ -24,6 +25,11 @@ public class RotatingCircleView extends android.support.v7.widget.AppCompatImage
 
     private static final int COLORDRAWABLE_DIMENSION = 1;
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
+    private static final int ALL = 0x1111;
+    private static final int TOP_LEFT = 0x0001;
+    private static final int TOP_RIGHT = 0x0010;
+    private static final int BOTTOM_LEFT = 0x0100;
+    private static final int BOTTOM_RIGHT = 0x1000;
 
     private Paint imgPaint;
     private RectF imgRect;
@@ -46,9 +52,10 @@ public class RotatingCircleView extends android.support.v7.widget.AppCompatImage
     private boolean hasInit;        //是否通过初始化设置图片
     private boolean hasSetImg;      //是否通过后期进行设置图片
 
-    private int chestnutRadius;     //当绘制的不全是一个正圆时，菱角的半径
+    private int chestnutRadius = 0;     //当绘制的不是一个正圆时，菱角的半径
 
-    private int circleKind = 0;      //当前是全圆还是周边圆，0为全圆
+    private int circleKind = ALL;      //当前是全圆还是周边圆，0x1111为全圆,暂且只支持俩个并列属性
+
 
     public RotatingCircleView(Context context) {
         super(context);
@@ -67,8 +74,8 @@ public class RotatingCircleView extends android.support.v7.widget.AppCompatImage
 
         borderWidth = a.getDimensionPixelSize(R.styleable.RotatingCircleView_circle_width, 0);
         borderColor = a.getColor(R.styleable.RotatingCircleView_circle_color, 0);
-        circleKind = a.getInt(R.styleable.RotatingCircleView_circle_kind, 0);
-        chestnutRadius = a.getInt(R.styleable.RotatingCircleView_circle_radius, 30);
+        circleKind = a.getInt(R.styleable.RotatingCircleView_circle_kind, 0x1111);
+        chestnutRadius = a.getInt(R.styleable.RotatingCircleView_circle_radius, 0);
         //回收属性，避免对下次的使用造成影响
         a.recycle();
         init();
@@ -105,7 +112,8 @@ public class RotatingCircleView extends android.support.v7.widget.AppCompatImage
         }
 
         //绘制全圆
-        if (circleKind == 0) {
+        Log.d("circleKind", 0x1111 + " : " + (0x0010 | 0x0001 | 0x1000 | 0x0100));
+        if (circleKind == ALL) {
             //画圆（圆形头像部分）
             canvas.drawCircle(getWidth() / 2, getHeight() / 2, imgRadius, imgPaint);
             //若设置了圆的边框宽度，将边框画出来
@@ -116,24 +124,42 @@ public class RotatingCircleView extends android.support.v7.widget.AppCompatImage
             Path path = new Path();
             float[] radi = {chestnutRadius, chestnutRadius, chestnutRadius, chestnutRadius, chestnutRadius, chestnutRadius, chestnutRadius, chestnutRadius};
             switch (circleKind) {
-                case 1:
+                case TOP_LEFT:
                     radi = new float[]{chestnutRadius, chestnutRadius, 0, 0, 0, 0, 0, 0};
                     break;
-                case 2:
+                case TOP_RIGHT:
                     radi = new float[]{0, 0, chestnutRadius, chestnutRadius, 0, 0, 0, 0};
                     break;
-                case 3:
+                case BOTTOM_RIGHT:
+                    radi = new float[]{0, 0, 0, 0, chestnutRadius, chestnutRadius, 0, 0};
+                    break;
+                case BOTTOM_LEFT:
                     radi = new float[]{0, 0, 0, 0, 0, 0, chestnutRadius, chestnutRadius};
                     break;
-                case 4:
-                    radi = new float[]{0, 0, 0, 0, chestnutRadius, chestnutRadius, 0, 0};
+                case TOP_LEFT | TOP_RIGHT:
+                    radi = new float[]{chestnutRadius, chestnutRadius, chestnutRadius, chestnutRadius, 0, 0, 0, 0};
+                    break;
+                case TOP_LEFT | BOTTOM_LEFT:
+                    radi = new float[]{chestnutRadius, chestnutRadius, 0, 0, 0, 0, chestnutRadius, chestnutRadius};
+                    break;
+                case TOP_LEFT | BOTTOM_RIGHT:
+                    radi = new float[]{chestnutRadius, chestnutRadius, 0, 0, chestnutRadius, chestnutRadius, 0, 0};
+                    break;
+                case TOP_RIGHT | BOTTOM_RIGHT:
+                    radi = new float[]{0, 0, chestnutRadius, chestnutRadius, chestnutRadius, chestnutRadius, 0, 0};
+                    break;
+                case TOP_RIGHT | BOTTOM_LEFT:
+                    radi = new float[]{0, 0, chestnutRadius, chestnutRadius, 0, 0, chestnutRadius, chestnutRadius};
+                    break;
+                case BOTTOM_LEFT | BOTTOM_RIGHT:
+                    radi = new float[]{0, 0, 0, 0, chestnutRadius, chestnutRadius, chestnutRadius, chestnutRadius};
                     break;
             }
             path.addRoundRect(imgRect, radi, Path.Direction.CCW);
             canvas.drawPath(path, imgPaint);
             canvas.drawPath(path, borderPaint);
         }
-        invalidate();
+//        invalidate();
     }
 
     //重写以下四个设置图片的方法是为了
@@ -197,7 +223,7 @@ public class RotatingCircleView extends android.support.v7.widget.AppCompatImage
             case MeasureSpec.UNSPECIFIED:
                 heightSize = Math.min(bitMapHeight, bitMapWidth);
         }
-        setMeasuredDimension(widthSize,heightSize);
+        setMeasuredDimension(widthSize, heightSize);
     }
 
 

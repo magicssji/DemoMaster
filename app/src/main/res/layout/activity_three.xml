@@ -30,7 +30,7 @@
                 android:layout_height="200dp"
                 android:src="@mipmap/pic"
                 app:circle_color="#000000"
-                app:circle_kind="top_left"
+                app:circle_kind="top_left|bottom_left"
                 app:circle_radius="10"
                 app:circle_width="2dp" />
 
@@ -39,7 +39,7 @@
                 android:layout_height="100dp"
                 android:src="@mipmap/pic"
                 app:circle_color="#3ae40b"
-                app:circle_kind="top_right"
+                app:circle_kind="top_right|bottom_right"
                 app:circle_radius="20"
                 app:circle_width="2dp" />
 
